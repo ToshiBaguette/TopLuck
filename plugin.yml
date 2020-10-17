@@ -1,0 +1,15 @@
+name: TopLuck
+main: fr.toshibane.topluck.TopLuck
+version: 3.0
+author: Toshibane
+description: Plugin permettant de trouver plus facilement les tricheurs.
+api-version: 1.13
+commands:
+  topluck:
+    description: Commande principale du plugin TopLuck.
+    usage: Usage incorrect ! Utilisez /topluck [Nom du joueur]
+    permission: topluck.admin.use
+permissions:
+  topluck.admin.use:
+    description: Permet l'utilisation des commandes TopLuck.
+    default: op
