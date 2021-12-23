@@ -70,7 +70,7 @@ public class TopLuckTable implements Listener {
 		}
 		
 		if (icones) {  // Icones de navigations
-			if (page > 0) { // S'il y a une page prÈcÈdente
+			if (page > 0) { // S'il y a une page pr√©c√©dente
 				ItemStack back = new ItemStack(Material.ARROW, 1);
 				
 				ItemMeta meta = back.getItemMeta();
@@ -111,7 +111,7 @@ public class TopLuckTable implements Listener {
 		PlayerTopLuck targetTL = topluck.getPlayerTopLuckFrom(target);
 		
 		
-		// TÈlÈportation au joueur
+		// T√©l√©portation au joueur
 		ItemStack tp = new ItemStack(Material.ENDER_PEARL, 1);
 		ItemMeta tpMeta = tp.getItemMeta();
 		tpMeta.setDisplayName(topluck.getConfig("Teleport"));
@@ -135,13 +135,13 @@ public class TopLuckTable implements Listener {
 		publicWMeta.setDisplayName(topluck.getConfig("PublicWarn"));
 		publicWarn.setItemMeta(publicWMeta);
 		
-		// Avertir en PrivÈ
+		// Avertir en Priv√©
 		ItemStack privateWarn = new ItemStack(Material.STICK, 1);
 		ItemMeta privateWM = privateWarn.getItemMeta();
 		privateWM.setDisplayName(topluck.getConfig("PrivateWarn"));
 		privateWarn.setItemMeta(privateWM);
 		
-		// Tous ses minerais comptabilisÈs
+		// Tous ses minerais comptabilis√©s
 		int i = 0;
 		for (String mat : targetTL.getMinedBlocks().keySet()) {
 			if (mat != "all") {
@@ -185,9 +185,14 @@ public class TopLuckTable implements Listener {
 			}
 			event.setCancelled(true);
 		}else if (Bukkit.getPlayer(event.getView().getTitle()) != null && event.getCurrentItem() != null && event.getCurrentItem().getItemMeta() != null) {
-			// Si nous sommes dans le menu de dÈtails
+			// Si nous sommes dans le menu de d√©tails
 			String nameItem = event.getCurrentItem().getItemMeta().getDisplayName();
 			Player target = Bukkit.getPlayer(event.getView().getTitle());
+			
+			if(nameItem == null) {
+				event.setCancelled(true);
+				return;
+			}
 			
 			if (nameItem.equals(topluck.getConfig("Teleport"))) {
 				event.getWhoClicked().teleport(Bukkit.getPlayer(event.getView().getTitle()));
