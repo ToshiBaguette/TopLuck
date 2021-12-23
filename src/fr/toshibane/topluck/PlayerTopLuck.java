@@ -37,13 +37,13 @@ public class PlayerTopLuck implements Serializable, Comparable<PlayerTopLuck> {
 			// Si on enregistre le type de blocs que le joueur vient de miner
 			minedBlocks.put(m.name().toLowerCase(), minedBlocks.get(m.name().toLowerCase()) + 1);
 		}
-		minedBlocks.put("all", getNbMinedBlocks() + 1);  // "all" contiendra la somme de tous les blocs minés
+		minedBlocks.put("all", getNbMinedBlocks() + 1);  // "all" contiendra la somme de tous les blocs minÃ©s
 	}
 	
 	public double getPercent(Material m) {
 		if (isLooked(m)) {
 			if (getNbMinedBlocks() > 0)
-				return Double.parseDouble(String.format("%.2f", (double)minedBlocks.get(m.name().toLowerCase()) / getNbMinedBlocks() * 100));
+				return round((double) minedBlocks.get(m.name().toLowerCase()) / getNbMinedBlocks() * 100, 2);
 			return (double)minedBlocks.get(m.name().toLowerCase());
 		}
 		return 0;
@@ -90,6 +90,15 @@ public class PlayerTopLuck implements Serializable, Comparable<PlayerTopLuck> {
 		if (allPercentage() == p.allPercentage()) return 0;
 		if (allPercentage() > p.allPercentage()) return 1;
 		return -1;
+	}
+	
+	public static double round(double value, int places) {
+		if (places < 0) throw new IllegalArgumentException();
+
+		long factor = (long) Math.pow(10, places);
+		value = value * factor;
+		long tmp = Math.round(value);
+		return (double) tmp / factor;
 	}
 
 	
