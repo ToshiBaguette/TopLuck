@@ -1,5 +1,4 @@
 Source Code from https://www.spigotmc.org/resources/topluck.45738
 
-You're totally free to modify it while you give credit to the original creator of this code, me.
-
-Just know that this plugin was inspired by a private one with the same name on FuzeIII's Server : Paladium.
+Minecraft Spigot Plugin working from 1.8 up to 1.15, highly inspired by a closed source plugin from [FuzeIII](https://www.youtube.com/@FuzeIII)'s modded Minecraft Server "Paladium".
+This plugin is not maintained anymore. If you want to update and use it, please fork this repository and edit the source code as you wish.
